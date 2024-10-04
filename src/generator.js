@@ -1,6 +1,7 @@
 
 const orders = require("./static/orders");
 const publishData=require("./static/service")
+const locations= require('./static/locations')
 // Mock Webhook URLs for each brand
 const webhookUrls = {
   kfc: 'http://localhost:3000/webhook/kfc',
@@ -38,15 +39,16 @@ async function simulateOrderJourney(brand, orderId, items) {
   //   { status: 'Order Delivered', eta: 0, rider: rider, items: items }
   // ];
   const orderEvents = [
-    { status: 'Order Placed', code: 100, eta: 30, rider: rider, items: items },
-    { status: 'Order Prepared', code: 101, eta: 25, rider: rider, items: items },
-    { status: 'Out of Store Geo Fence (100 meters)', code: 107, eta: 20, rider: rider, items: items },
-    { status: 'Out for Delivery', code: 108, eta: 15, rider: rider, items: items },
-    { status: 'Out for Delivery (2x)', code: 108, eta: 10, rider: rider, items: items },
-    { status: 'Order Delivered', code: 111, eta: 0, rider: rider, items: items }
+    { status: 'Order Placed', code: 100, eta: 30, rider: rider, items: items ,location:locations[0]},
+    { status: 'Order Prepared', code: 101, eta: 20, rider: rider, items: items ,location:locations[0]},
+    { status: 'Out of Store Geo Fence (100 meters)', code: 107, eta: 12, rider: rider, items: items,location:locations[1] },
+    { status: 'Out for Delivery', code: 108, eta: 10, rider: rider, items: items ,location:locations[2]},
+    { status: 'Out for Delivery', code: 108, eta: 8, rider: rider, items: items ,location:locations[3]},
+    { status: 'Out for Delivery (2x)', code: 108, eta: 6, rider: rider, items: items,location:locations[4] },
+    { status: 'Out for Delivery (2x)', code: 108, eta: 4, rider: rider, items: items,location:locations[5] },
+    { status: 'Rider Reached Customer Geo Fence(100 meters)', code: 109, eta: 2, rider: rider, items: items,location:locations[6] },
+    { status: 'Order Delivered', code: 111, eta: 0, rider: rider, items: items ,location:locations[7]}
 ];
-
-
 
 
   for (let i = 0; i < orderEvents.length; i++) {
@@ -56,14 +58,17 @@ async function simulateOrderJourney(brand, orderId, items) {
       console.log(`Sending "${orderEvents[i].status}" update for ${brand}, Order ID: ${orderId}`);
 
       // Send event to the brand's webhook
-      publishData(brand,{
+      publishData(brand,Object.assign({}, {
         orderId: orderId,
+        riderId: "13475",
+        riderName: orderEvents[i].rider.name,
+        riderPhone: orderEvents[i].rider.phone,
+        customerName: "dima 1987",
+        customerPhone: "566628897",
         status: orderEvents[i].status,
         statuscode:orderEvents[i].code,
         eta: orderEvents[i].eta,
-        rider: orderEvents[i].rider,
-        items: orderEvents[i].items
-      }).then(msg=> console.log("----Generated----",msg)).catch(err=>console.log("----ErrorGenerated----",err))
+      },orderEvents[i].location)).then(msg=> console.log("----Generated----",msg)).catch(err=>console.log("----ErrorGenerated----",err))
   
       // Delay between each event to simulate a real journey (2 seconds for demo purposes)
       await new Promise(resolve => setTimeout(resolve, getRandomTimeout()*1000));
