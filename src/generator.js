@@ -41,15 +41,35 @@ async function simulateOrderJourney(brand, orderId, items) {
   const orderEvents = [
     { status: 'Order Placed', code: 100, eta: 30, rider: rider, items: items ,location:locations[0]},
     { status: 'Order Prepared', code: 101, eta: 20, rider: rider, items: items ,location:locations[0]},
-    { status: 'Out of Store Geo Fence (100 meters)', code: 107, eta: 12, rider: rider, items: items,location:locations[1] },
-    { status: 'Out for Delivery', code: 108, eta: 10, rider: rider, items: items ,location:locations[2]},
-    { status: 'Out for Delivery', code: 108, eta: 8, rider: rider, items: items ,location:locations[3]},
-    { status: 'Out for Delivery (2x)', code: 108, eta: 6, rider: rider, items: items,location:locations[4] },
-    { status: 'Out for Delivery (2x)', code: 108, eta: 4, rider: rider, items: items,location:locations[5] },
-    { status: 'Rider Reached Customer Geo Fence(100 meters)', code: 109, eta: 2, rider: rider, items: items,location:locations[6] },
+    { status: 'Order Picked', code: 7, eta: 20, rider: rider, items: items ,location:locations[0]},
+    { status: 'Out of Store Geo Fence (100 meters)', code: 12, eta: 12, rider: rider, items: items,location:locations[1] },
+    { status: 'Out for Delivery', code: 7, eta: 10, rider: rider, items: items ,location:locations[2]},
+    { status: 'Out for Delivery', code: 7, eta: 8, rider: rider, items: items ,location:locations[3]},
+    { status: 'Out for Delivery (2x)', code: 7, eta: 6, rider: rider, items: items,location:locations[4] },
+    { status: 'Out for Delivery (2x)', code: 7, eta: 4, rider: rider, items: items,location:locations[5] },
+    { status: 'Rider Reached Customer Geo Fence(100 meters)', code: 13, eta: 2, rider: rider, items: items,location:locations[6] },
     { status: 'Order Delivered', code: 111, eta: 0, rider: rider, items: items ,location:locations[7]}
 ];
 
+let additiona_payload={
+  "clubbed_order": "NO",
+  "clubbed_intransit": "YES",
+  "non_integrated_dod_rider": "No",
+  "integrated_dod_rider": "Yes",
+  "order_on_hold": "Yes/No",
+  "speed": 0.72037643,
+  "accuracy": 22.084,
+  "heading": 101,
+  "poscreatedattimezone": "2024-09-11T12:08:58Z",
+  "createdattimezone": "2024-09-11T12:10:12Z",
+  "planneddeliverytimezone": "2024-09-11T12:53:58Z",
+  "ordersourceid": 4,
+  "storebspnumber": "155c63dc78df480da008a76fde914d35",
+  "countryid": 1,
+  "brandid": 3,
+  "storeid": "671",
+  "almporderid": "ca76858a2eb1144b265df5c4a45146a2f5b67eca"
+};
 
   for (let i = 0; i < orderEvents.length; i++) {
     try {
@@ -65,10 +85,10 @@ async function simulateOrderJourney(brand, orderId, items) {
         riderPhone: orderEvents[i].rider.phone,
         customerName: "dima 1987",
         customerPhone: "566628897",
-        status: orderEvents[i].status,
-        statuscode:orderEvents[i].code,
+        order_status: orderEvents[i].status,
+        almpStatusId:orderEvents[i].code,
         eta: orderEvents[i].eta,
-      },orderEvents[i].location)).then(msg=> console.log("----Generated----",msg)).catch(err=>console.log("----ErrorGenerated----",err))
+      },orderEvents[i].location,additiona_payload)).then(msg=> console.log("----Generated----",msg)).catch(err=>console.log("----ErrorGenerated----",err))
   
       // Delay between each event to simulate a real journey (2 seconds for demo purposes)
       await new Promise(resolve => setTimeout(resolve, getRandomTimeout()*1000));

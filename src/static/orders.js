@@ -1,7 +1,7 @@
 const orders=[
     {
       brand: 'kfc',
-      orderId: 'kfc123',
+      orderId: 'kfc1234',
       items: [{ name: 'Fried Chicken', quantity: 3 }, { name: 'Fries', quantity: 1 }]
     },
     {
