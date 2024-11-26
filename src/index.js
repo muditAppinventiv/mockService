@@ -42,7 +42,13 @@ app.get('/order/:brand/:orderId', async (req, res) => {
 
 app.get('/generate', async (req, res) => {
     const { brand, orderId } = req.params;
-    simulateOrders();
+    simulateOrders.simulateOrders();
+    res.send("Generated")
+  });
+
+app.get('/generate/:id', async (req, res) => {
+    const { brand, orderId,id } = req.params;
+    simulateOrders.simulateSingleOrder(id);
     res.send("Generated")
   });
 

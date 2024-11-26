@@ -91,6 +91,15 @@ async function simulateOrders() {
 
 }
 
+async function simulateSingleOrder(id) {
+ 
+  // Simulate order journeys for each brand
+  var order=orders[0];
+  await simulateOrderJourney(order.brand, id, order.items);
+
+
+}
+
 // Start the order simulation
 // simulateOrders();
-module.exports=simulateOrders;
+module.exports={simulateOrders,simulateSingleOrder};
