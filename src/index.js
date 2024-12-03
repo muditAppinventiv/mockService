@@ -41,10 +41,23 @@ app.get('/order/:brand/:orderId', async (req, res) => {
 
 
 app.get('/generate', async (req, res) => {
-    const { brand, orderId } = req.params;
-    simulateOrders();
-    res.send("Generated")
-  });
+  // const { brand, orderId } = req.params;
+  let orderId="kfc_official_structure_default"
+  simulateOrders(orderId);
+  res.send("Generated")
+});
+
+app.get('/generate/:orderId', async (req, res) => {
+  const { brand, orderId } = req.params;
+  if(orderId){
+    simulateOrders(orderId);
+  }
+  else{
+    simulateOrders("kfc_official_structure_dynamic");
+  }
+  
+  res.send(" Dynamic Generated")
+});
 
 // Start the server
 const PORT = process.env.PORT || 3000;

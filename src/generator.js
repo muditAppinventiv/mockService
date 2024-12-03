@@ -105,11 +105,11 @@ let additiona_payload={
 }
 
 // Simulate orders for all brands
-async function simulateOrders() {
+async function simulateOrders(orderId) {
  
   // Simulate order journeys for each brand
   var order=orders[0];
-  await simulateOrderJourney(order.brand, order.orderId, order.items);
+  await simulateOrderJourney(order.brand, orderId, order.items);
 
 
 }
