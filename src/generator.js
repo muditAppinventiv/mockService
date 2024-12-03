@@ -39,16 +39,18 @@ async function simulateOrderJourney(brand, orderId, items) {
   //   { status: 'Order Delivered', eta: 0, rider: rider, items: items }
   // ];
   const orderEvents = [
-    { status: 'Order Placed', code: 100, eta: 30, rider: rider, items: items ,location:locations[0]},
-    { status: 'Order Prepared', code: 101, eta: 20, rider: rider, items: items ,location:locations[0]},
-    { status: 'Order Picked', code: 7, eta: 20, rider: rider, items: items ,location:locations[0]},
-    { status: 'Out of Store Geo Fence (100 meters)', code: 12, eta: 12, rider: rider, items: items,location:locations[1] },
-    { status: 'Out for Delivery', code: 7, eta: 10, rider: rider, items: items ,location:locations[2]},
-    { status: 'Out for Delivery', code: 7, eta: 8, rider: rider, items: items ,location:locations[3]},
-    { status: 'Out for Delivery (2x)', code: 7, eta: 6, rider: rider, items: items,location:locations[4] },
-    { status: 'Out for Delivery (2x)', code: 7, eta: 4, rider: rider, items: items,location:locations[5] },
-    { status: 'Rider Reached Customer Geo Fence(100 meters)', code: 13, eta: 2, rider: rider, items: items,location:locations[6] },
-    { status: 'Order Delivered', code: 111, eta: 0, rider: rider, items: items ,location:locations[7]}
+    { status: 'Unassigned', code: 11, eta: 30, rider: rider, items: items ,location:locations[0]},
+    { status: 'Assigned', code: 2, eta: 20, rider: rider, items: items ,location:locations[0]},
+    { status: 'Seen', code: 3, eta: 20, rider: rider, items: items ,location:locations[0]},
+    { status: 'Scanned', code: 4, eta: 20, rider: rider, items: items ,location:locations[0]},
+    { status: 'OrderPicked', code: 7, eta: 20, rider: rider, items: items ,location:locations[0]},
+    { status: 'OrderPicked', code: 12, eta: 14, rider: rider, items: items,location:locations[1] },
+    { status: 'OrderPicked', code: 7, eta: 11, rider: rider, items: items ,location:locations[2]},
+    { status: 'OrderPicked', code: 7, eta: 8, rider: rider, items: items ,location:locations[3]},
+    { status: 'OrderPicked', code: 7, eta: 6, rider: rider, items: items,location:locations[4] },
+    { status: 'OrderPicked', code: 7, eta: 4, rider: rider, items: items,location:locations[5] },
+    { status: 'OrderPicked', code: 13, eta: 2, rider: rider, items: items,location:locations[6] },
+    { status: 'Delivered', code: 8, eta: 0, rider: rider, items: items ,location:locations[7]}
 ];
 
 let additiona_payload={
@@ -56,7 +58,7 @@ let additiona_payload={
   "clubbed_intransit": "YES",
   "non_integrated_dod_rider": "No",
   "integrated_dod_rider": "Yes",
-  "order_on_hold": "Yes/No",
+  "order_on_hold": "No",
   "speed": 0.72037643,
   "accuracy": 22.084,
   "heading": 101,
@@ -68,6 +70,7 @@ let additiona_payload={
   "countryid": 1,
   "brandid": 3,
   "storeid": "671",
+  "order_posid":"POSID",
   "almporderid": "ca76858a2eb1144b265df5c4a45146a2f5b67eca"
 };
 
