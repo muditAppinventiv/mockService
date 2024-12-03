@@ -1,0 +1,8 @@
+two ways to deal with this 
+
+1) dynamic 
+https://dynamic-and-updated-structure-firestore.onrender.com/generate/dynamic_order_id
+
+2) normal at "kfc_official_structure_default" as orderId
+https://dynamic-and-updated-structure-firestore.onrender.com/generate/
+{orderId: 'testdynamic3dec',riderId: '13475',riderName: 'John Doe',riderPhone: '555-1234',customerName: 'dima 1987',customerPhone: '566628897',order_status: 'Delivered',almpStatusId: 8,eta: 0,storeLocationLat: '28.606167',storeLocationLng: '77.362380',speed: 0.72037643,accuracy: 22.084,heading: 101,deliveryLocationLat: '28.606068',deliveryLocationLng: '77.374336',riderLatitude: '28.606068',riderLongitude: '77.374336',clubbed_order: 'NO',clubbed_intransit: 'YES',non_integrated_dod_rider: 'No',integrated_dod_rider: 'Yes',order_on_hold: 'No',poscreatedattimezone: '2024-09-11T12:08:58Z',createdattimezone: '2024-09-11T12:10:12Z',planneddeliverytimezone: '2024-09-11T12:53:58Z',ordersourceid: 4,storebspnumber: '155c63dc78df480da008a76fde914d35',countryid: 1,brandid: 3,storeid: '671',order_posid: 'POSID',almporderid: 'ca76858a2eb1144b265df5c4a45146a2f5b67eca'Dec 3 01:50:55 PM}
