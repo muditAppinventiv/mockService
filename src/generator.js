@@ -111,18 +111,18 @@ async function simulateOrderJourney2(brand, orderId, items) {
 
   const orderEvents = [
     
-    { status: 'Unassigned', code: '11', eta: '30', location: locations[0] },
-    { status: 'Assigned', code: '2', eta: '20', location: locations[0] },
-    { status: 'Seen', code: '3', eta: '20', location: locations[0] },
-    { status: 'Scanned', code: '4', eta: '20', location: locations[0] },
-    { status: 'OrderPicked', code: '7', eta: '20', location: locations[0] },
-    { status: 'OrderPicked', code: '12', eta: '14', location: locations[1] },
-    { status: 'OrderPicked', code: '7', eta: '11', location: locations[2] },
-    { status: 'OrderPicked', code: '7', eta: '8', location: locations[3] },
-    { status: 'OrderPicked', code: '7', eta: '6', location: locations[4] },
-    { status: 'OrderPicked', code: '7', eta: '4', location: locations[5] },
-    { status: 'OrderPicked', code: '13', eta: '2', location: locations[6] },
-    { status: 'Delivered', code: '8', eta: '0', location: locations[7] },
+    { status: 'Unassigned', code: 11, eta: 30, location: locations[0] },
+    { status: 'Assigned', code: 2, eta: 20, location: locations[0] },
+    { status: 'Seen', code: 3, eta: 20, location: locations[0] },
+    { status: 'Scanned', code: 4, eta: 20, location: locations[0] },
+    { status: 'OrderPicked', code: 7, eta: 20, location: locations[0] },
+    { status: 'OrderPicked', code: 12, eta: 14, location: locations[1] },
+    { status: 'OrderPicked', code: 7, eta: 11, location: locations[2] },
+    { status: 'OrderPicked', code: 7, eta: 8, location: locations[3] },
+    { status: 'OrderPicked', code: 7, eta: 6, location: locations[4] },
+    { status: 'OrderPicked', code: 7, eta: 4, location: locations[5] },
+    { status: 'OrderPicked', code: 13, eta: 2, location: locations[6] },
+    { status: 'Delivered', code: 8, eta: 0, location: locations[7] },
   ];
   
   let isStoreGeoFenceIn=true;
@@ -138,8 +138,8 @@ async function simulateOrderJourney2(brand, orderId, items) {
       
       // Firestore payload structure
       let firestorePayload = {
-        countryId: "2",
-        brandId: "3",
+        countryId: 2,
+        brandId: 3,
         storeId: "115",
         customerPhone: "388296",
         customerName: "Ali Almos",
@@ -151,7 +151,7 @@ async function simulateOrderJourney2(brand, orderId, items) {
         almpOrderId: "4c292782f0c7232c3b0fc0e8e2bbc013447ae",
         createdAtTimezone: "2024-12-12T23:42:56Z",
         plannedDeliveryTimezone: "2024-12-13T00:16:47Z",
-        orderSourceId: "70",
+        orderSourceId: 70,
         almpStatusId: orderEvents[i].code,
         deliveryLocationLat: "26.187386",
         deliveryLocationLng: "50.48678",
