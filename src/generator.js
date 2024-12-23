@@ -137,7 +137,7 @@ async function simulateOrderJourney2(brand, orderId, items) {
       }
       
       // Firestore payload structure
-      const firestorePayload = {
+      let firestorePayload = {
         countryId: "2",
         brandId: "3",
         storeId: "115",
@@ -180,6 +180,8 @@ async function simulateOrderJourney2(brand, orderId, items) {
         tmpKey4: "",
         tmpKey5: "",
       };
+
+     firestorePayload= Object.assign({},firestorePayload,orderEvents[i].location);
 
       // Send event to the Firestore
       publishData(brand, firestorePayload)
