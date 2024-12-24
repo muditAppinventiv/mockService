@@ -132,7 +132,7 @@ async function simulateOrderJourney2(brand, orderId, items) {
     try {
       console.log(`Sending "${orderEvents[i].status}" update for ${brand}, Order ID: ${orderId}`);
 
-      if(orderEvents[i].code==="12"){
+      if(orderEvents[i].code===12){
         isStoreGeoFenceIn=false;
       }
       
