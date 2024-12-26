@@ -5,6 +5,7 @@ const publishData=require("./static/service")
 
 const { doc,setDoc,updateDoc,addDoc ,collection, or} = require('@firebase/firestore');
 const simulateOrders = require('./generator');
+const serversimulateOrders = require('./servergenerator');
 
 require('dotenv').config();
 
@@ -54,6 +55,26 @@ app.get('/generate/:orderId', async (req, res) => {
   }
   else{
     simulateOrders("kfc_official_structure_dynamic");
+  }
+  
+  res.send(" Dynamic Generated")
+});
+
+
+app.get('/servergenerate', async (req, res) => {
+  // const { brand, orderId } = req.params;
+  let orderId="kfc_official_structure_default"
+  serversimulateOrders(orderId);
+  res.send("Generated")
+});
+
+app.get('/servergenerate/:orderId', async (req, res) => {
+  const { brand, orderId } = req.params;
+  if(orderId){
+    serversimulateOrders(orderId);
+  }
+  else{
+    serversimulateOrders("kfc_official_structure_dynamic");
   }
   
   res.send(" Dynamic Generated")

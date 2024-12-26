@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "axios": "^1.7.9",
     "dotenv": "^16.4.5",
     "express": "^4.21.0",
     "firebase": "^10.13.2"
@@ -7,11 +8,10 @@
   "name": "eventrecieverfirestore",
   "version": "1.0.0",
   "main": "index.js",
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start":"node src/index.js ",
-    "startfrontend":"node src/frontend/frontend.js "
+    "start": "node src/index.js ",
+    "startfrontend": "node src/frontend/frontend.js "
   },
   "repository": {
     "type": "git",
