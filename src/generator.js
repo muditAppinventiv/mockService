@@ -203,7 +203,7 @@ async function simulateOrders(orderId) {
  
   // Simulate order journeys for each brand
   var order=orders[0];
-  await simulateOrderJourney2(order.brand, orderId, order.items);
+  await simulateOrderJourney2("kfc_uae", orderId, order.items);
 
 
 }
