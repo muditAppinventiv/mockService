@@ -72,7 +72,7 @@ async function simulateOrderJourney2(brand, orderId, items) {
         storeLocationLat: "26.1826617",
         storeLocationLng: "50.4661924",
         orderId: orderId,
-        externalOrderId: "18867396",
+        externalOrderId: orderId,
         almpOrderId: "4c292782f0c7232c3b0fc0e8e2bbc013447ae",
         createdAtTimezone: "2024-12-12T23:42:56Z",
         plannedDeliveryTimezone: "2024-12-13T00:16:47Z",

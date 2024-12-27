@@ -3,14 +3,7 @@ const {firestore}=require("./firestore")
 
 const { doc,setDoc,updateDoc,addDoc ,collection, or} = require('@firebase/firestore');
 
-// Hashing function for topics
-function getHashedTopic(brand, orderId) {
-    // const hash = crypto.createHash('sha256');
-    // hash.update(`${brand}-${orderId}`);
-    // return hash.digest('hex');
-    return orderId;
-  }
- 
+
 
 let orders={}
 
@@ -19,19 +12,12 @@ function publishData(brand,data){
     return new Promise(async (resolve,reject)=>{
     // Publish to the brand's MQTT topic
    
-    let orderId=data.orderId;
-    if(data.orderId){
+    let externalOrderId=data.externalOrderId || data.orderId || "invalid_id_deafult_structure";
     
-          if(!orders[orderId]){
-              // TODO hashing 
-              orders[orderId]=orderId;
-              
-          }
-    } 
-    const topic =getHashedTopic(brand, data.orderId);
+    const topic =data.externalOrderId;
     console.log("publishing topic",topic,data);
     try {
-        const docId=orders[orderId] || "TRIAL"
+        const docId=externalOrderId|| "TRIAL"
         // const result = await addDoc(collection(firestore, brand), data);
         const docRef = doc(firestore, brand, docId);
         await setDoc(docRef, data);
