@@ -128,7 +128,7 @@ async function simulateOrderJourney2(brand, orderId, items) {
 async function serversimulateOrders(orderId) {
  
   // Simulate order journeys for each brand
-  var order=orders[0];
+  var order=orders[1];
   await simulateOrderJourney2(order.brand, orderId, order.items);
 
 
