@@ -5,12 +5,12 @@ const orders=[
       items: [{ name: 'Fried Chicken', quantity: 3 }, { name: 'Fries', quantity: 1 }]
     },
     {
-      brand: 'pizzahut',
+      brand: 'phd',
       orderId: 'ph456',
       items: [{ name: 'Pepperoni Pizza', quantity: 2 }, { name: 'Garlic Bread', quantity: 1 }]
     },
     {
-      brand: 'hardees',
+      brand: 'hrd',
       orderId: 'HD789',
       items: [{ name: 'Cheeseburger', quantity: 2 }, { name: 'Coke', quantity: 2 }]
     }
